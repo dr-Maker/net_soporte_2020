@@ -14,7 +14,7 @@
 
     <div class="form-group">
         <label>Rut</label>
-        <input class="form-control" type="text" name="rut" value="" required />
+        <input class="form-control" type="number" name="rut" value="" required />
     </div>
 
     <div class="form-group">
@@ -22,12 +22,12 @@
         <input class="form-control" type="text" name="dv" value="" required />
     </div>
     <div class="form-group">
-        <label>Ap Mapeterno</label>
-        <input class="form-control" type="text" name="ap_materno" value="" required />
-    </div>
-    <div class="form-group">
         <label>Ap Paterno</label>
         <input class="form-control" type="text" name="ap_paterno" value="" required />
+    </div>
+    <div class="form-group">
+        <label>Ap Materno</label>
+        <input class="form-control" type="text" name="ap_materno" value="" required />
     </div>
     <div class="form-group">
         <label>Nombre</label>
@@ -35,11 +35,11 @@
     </div>
     <div class="form-group">
         <label>Email</label>
-        <input class="form-control" type="text" name="email" value="" required />
+        <input class="form-control" type="email" name="email" value="" required />
     </div>
     <div class="form-group">
         <label>Teléfono</label>
-        <input class="form-control" type="text" name="telefono" value="" required />
+        <input class="form-control" type="number" name="telefono" value="" required />
     </div>
     <div class="form-group">
         <label>dirección Calle</label>
@@ -47,11 +47,12 @@
     </div>
     <div class="form-group">
         <label>Dir num</label>
-        <input class="form-control" type="text" name="idcomuna" value="" required />
+        <input class="form-control" type="number" name="dir_numero"  value="" required />
     </div>
+
     <div class="form-group">
         <label>Comuna</label>
-        <select class="form-control" name="dir_numero" required>
+        <select class="form-control" name="idcomuna" required>
             <option value="0">Todas</option>
             @foreach (var item in ViewBag.Comunas)
             {
