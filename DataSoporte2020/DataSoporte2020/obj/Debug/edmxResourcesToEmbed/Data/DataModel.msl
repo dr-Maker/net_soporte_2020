@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="net2020_soporteModelStoreContainer" CdmEntityContainer="net2020_soporteEntities">
+    <EntitySetMapping Name="asignado">
+      <EntityTypeMapping TypeName="net2020_soporteModel.asignado">
+        <MappingFragment StoreEntitySet="asignado">
+          <ScalarProperty Name="idasignado" ColumnName="idasignado" />
+          <ScalarProperty Name="idsoporte" ColumnName="idsoporte" />
+          <ScalarProperty Name="idoperador" ColumnName="idoperador" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cliente">
+      <EntityTypeMapping TypeName="net2020_soporteModel.cliente">
+        <MappingFragment StoreEntitySet="cliente">
+          <ScalarProperty Name="idcliente" ColumnName="idcliente" />
+          <ScalarProperty Name="idpersona" ColumnName="idpersona" />
+          <ScalarProperty Name="idplan" ColumnName="idplan" />
+          <ScalarProperty Name="fechaini" ColumnName="fechaini" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="estado">
+      <EntityTypeMapping TypeName="net2020_soporteModel.estado">
+        <MappingFragment StoreEntitySet="estado">
+          <ScalarProperty Name="idestado" ColumnName="idestado" />
+          <ScalarProperty Name="desc_estado" ColumnName="desc_estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="operador">
+      <EntityTypeMapping TypeName="net2020_soporteModel.operador">
+        <MappingFragment StoreEntitySet="operador">
+          <ScalarProperty Name="idoperador" ColumnName="idoperador" />
+          <ScalarProperty Name="idpersona" ColumnName="idpersona" />
+          <ScalarProperty Name="idsucursal" ColumnName="idsucursal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="persona">
+      <EntityTypeMapping TypeName="net2020_soporteModel.persona">
+        <MappingFragment StoreEntitySet="persona">
+          <ScalarProperty Name="idpersona" ColumnName="idpersona" />
+          <ScalarProperty Name="rut" ColumnName="rut" />
+          <ScalarProperty Name="dv" ColumnName="dv" />
+          <ScalarProperty Name="ap_paterno" ColumnName="ap_paterno" />
+          <ScalarProperty Name="ap_materno" ColumnName="ap_materno" />
+          <ScalarProperty Name="nombres" ColumnName="nombres" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="dir_calle" ColumnName="dir_calle" />
+          <ScalarProperty Name="dir_numero" ColumnName="dir_numero" />
+          <ScalarProperty Name="idcomuna" ColumnName="idcomuna" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="seguimiento">
+      <EntityTypeMapping TypeName="net2020_soporteModel.seguimiento">
+        <MappingFragment StoreEntitySet="seguimiento">
+          <ScalarProperty Name="idseguimiento" ColumnName="idseguimiento" />
+          <ScalarProperty Name="idasignado" ColumnName="idasignado" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="desc_seguimiento" ColumnName="desc_seguimiento" />
+          <ScalarProperty Name="idestado" ColumnName="idestado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="solicitud">
+      <EntityTypeMapping TypeName="net2020_soporteModel.solicitud">
+        <MappingFragment StoreEntitySet="solicitud">
+          <ScalarProperty Name="idsolicitud" ColumnName="idsolicitud" />
+          <ScalarProperty Name="idcliente" ColumnName="idcliente" />
+          <ScalarProperty Name="idtiposol" ColumnName="idtiposol" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="desc_solicitud" ColumnName="desc_solicitud" />
+          <ScalarProperty Name="idestado" ColumnName="idestado" />
+          <ScalarProperty Name="fecha_tope" ColumnName="fecha_tope" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="soporte">
+      <EntityTypeMapping TypeName="net2020_soporteModel.soporte">
+        <MappingFragment StoreEntitySet="soporte">
+          <ScalarProperty Name="idsoporte" ColumnName="idsoporte" />
+          <ScalarProperty Name="idsolicitud" ColumnName="idsolicitud" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="desc_soporte" ColumnName="desc_soporte" />
+          <ScalarProperty Name="idestado" ColumnName="idestado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sucursal">
+      <EntityTypeMapping TypeName="net2020_soporteModel.sucursal">
+        <MappingFragment StoreEntitySet="sucursal">
+          <ScalarProperty Name="idsucursal" ColumnName="idsucursal" />
+          <ScalarProperty Name="idregion" ColumnName="idregion" />
+          <ScalarProperty Name="idcomuna" ColumnName="idcomuna" />
+          <ScalarProperty Name="desc_sucursal" ColumnName="desc_sucursal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_comuna">
+      <EntityTypeMapping TypeName="net2020_soporteModel.tbl_comuna">
+        <MappingFragment StoreEntitySet="tbl_comuna">
+          <ScalarProperty Name="idcomuna" ColumnName="idcomuna" />
+          <ScalarProperty Name="desc_comuna" ColumnName="desc_comuna" />
+          <ScalarProperty Name="idregion" ColumnName="idregion" />
+          <ScalarProperty Name="idprovincia" ColumnName="idprovincia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_perfil">
+      <EntityTypeMapping TypeName="net2020_soporteModel.tbl_perfil">
+        <MappingFragment StoreEntitySet="tbl_perfil">
+          <ScalarProperty Name="idperfil" ColumnName="idperfil" />
+          <ScalarProperty Name="desc_perfil" ColumnName="desc_perfil" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_provincia">
+      <EntityTypeMapping TypeName="net2020_soporteModel.tbl_provincia">
+        <MappingFragment StoreEntitySet="tbl_provincia">
+          <ScalarProperty Name="idprovincia" ColumnName="idprovincia" />
+          <ScalarProperty Name="desc_provincia" ColumnName="desc_provincia" />
+          <ScalarProperty Name="idregion" ColumnName="idregion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_region">
+      <EntityTypeMapping TypeName="net2020_soporteModel.tbl_region">
+        <MappingFragment StoreEntitySet="tbl_region">
+          <ScalarProperty Name="idregion" ColumnName="idregion" />
+          <ScalarProperty Name="desc_region" ColumnName="desc_region" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_usuario">
+      <EntityTypeMapping TypeName="net2020_soporteModel.tbl_usuario">
+        <MappingFragment StoreEntitySet="tbl_usuario">
+          <ScalarProperty Name="idusuario" ColumnName="idusuario" />
+          <ScalarProperty Name="idpersona" ColumnName="idpersona" />
+          <ScalarProperty Name="idperfil" ColumnName="idperfil" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="clave" ColumnName="clave" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipoplan">
+      <EntityTypeMapping TypeName="net2020_soporteModel.tipoplan">
+        <MappingFragment StoreEntitySet="tipoplan">
+          <ScalarProperty Name="idplan" ColumnName="idplan" />
+          <ScalarProperty Name="desc_plan" ColumnName="desc_plan" />
+          <ScalarProperty Name="costo" ColumnName="costo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tiposolicitud">
+      <EntityTypeMapping TypeName="net2020_soporteModel.tiposolicitud">
+        <MappingFragment StoreEntitySet="tiposolicitud">
+          <ScalarProperty Name="idtiposol" ColumnName="idtiposol" />
+          <ScalarProperty Name="desc_tiposol" ColumnName="desc_tiposol" />
+          <ScalarProperty Name="numdias" ColumnName="numdias" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

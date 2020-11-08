@@ -1,0 +1,27 @@
+﻿@model DataSoporte2020.Data.estado
+
+@{
+    ViewBag.Title = "Editar";
+    ViewBag.TitlePag = "Editar estado";
+    Layout = "~/Views/Shared/_Plantilla.cshtml";
+}
+
+<form method="post">
+
+    <div class="form-group">
+        <label>Id.Estado</label>
+        <input class="form-control" type="number" name="idestado" value="@Model.idestado" readonly />
+    </div>
+
+    <div class="form-group">
+        <label>Desc.Estado</label>
+        <input class="form-control" type="text" name="desc_estado" value="@Model.desc_estado" required />
+    </div>
+
+    <div class="form-group">
+        <input class="btn btn-success" type="submit" value="Actualizar" />
+    </div>
+</form>
+<p>
+    @Html.ActionLink("Volver", "Index")
+</p>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ed09d85245d04dd190b8901894c3ae49" Name="Diagram1">
+        <EntityTypeShape EntityType="net2020_soporteModel.asignado" Width="1.5" PointX="12" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="net2020_soporteModel.cliente" Width="1.5" PointX="9.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="net2020_soporteModel.estado" Width="1.5" PointX="12" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="net2020_soporteModel.operador" Width="1.5" PointX="9.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="net2020_soporteModel.persona" Width="1.5" PointX="7.5" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="net2020_soporteModel.seguimiento" Width="1.5" PointX="14.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="net2020_soporteModel.solicitud" Width="1.5" PointX="12" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="net2020_soporteModel.soporte" Width="1.5" PointX="14.25" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="net2020_soporteModel.sucursal" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="net2020_soporteModel.tbl_comuna" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="net2020_soporteModel.tbl_perfil" Width="1.5" PointX="10.5" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="net2020_soporteModel.tbl_provincia" Width="1.5" PointX="3" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="net2020_soporteModel.tbl_region" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="net2020_soporteModel.tbl_usuario" Width="1.5" PointX="12.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="net2020_soporteModel.tipoplan" Width="1.5" PointX="7.5" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="net2020_soporteModel.tiposolicitud" Width="1.5" PointX="9.75" PointY="16.125" IsExpanded="true" />
+        <AssociationConnector Association="net2020_soporteModel.FK__asignado__idoper__04AFB25B" ManuallyRouted="false" />
+        <AssociationConnector Association="net2020_soporteModel.FK__asignado__idsopo__03BB8E22" ManuallyRouted="false" />
+        <AssociationConnector Association="net2020_soporteModel.FK__seguimien__idasi__078C1F06" ManuallyRouted="false" />
+        <AssociationConnector Association="net2020_soporteModel.FK__cliente__idperso__74794A92" ManuallyRouted="false" />
+        <AssociationConnector Association="net2020_soporteModel.FK__cliente__idplan__756D6ECB" ManuallyRouted="false" />
+        <AssociationConnector Association="net2020_soporteModel.FK__solicitud__idcli__7849DB76" ManuallyRouted="false" />
+        <AssociationConnector Association="net2020_soporteModel.FK__seguimien__idest__0880433F" ManuallyRouted="false" />
+        <AssociationConnector Association="net2020_soporteModel.FK__soporte__idestad__00DF2177" ManuallyRouted="false" />
+        <AssociationConnector Association="net2020_soporteModel.FK__operador__idpers__7C1A6C5A" ManuallyRouted="false" />
+        <AssociationConnector Association="net2020_soporteModel.FK__operador__idsucu__7D0E9093" ManuallyRouted="false" />
+        <AssociationConnector Association="net2020_soporteModel.FK__persona__idcomun__719CDDE7" ManuallyRouted="false" />
+        <AssociationConnector Association="net2020_soporteModel.FK__tbl_usuar__idper__0E391C95" ManuallyRouted="false" />
+        <AssociationConnector Association="net2020_soporteModel.FK__solicitud__idtip__793DFFAF" ManuallyRouted="false" />
+        <AssociationConnector Association="net2020_soporteModel.FK__soporte__idsolic__7FEAFD3E" ManuallyRouted="false" />
+        <AssociationConnector Association="net2020_soporteModel.FK__sucursal__idcomu__6CD828CA" ManuallyRouted="false" />
+        <AssociationConnector Association="net2020_soporteModel.FK__sucursal__idregi__6BE40491" ManuallyRouted="false" />
+        <AssociationConnector Association="net2020_soporteModel.FK__tbl_comun__idpro__625A9A57" ManuallyRouted="false" />
+        <AssociationConnector Association="net2020_soporteModel.FK__tbl_comun__idreg__634EBE90" ManuallyRouted="false" />
+        <AssociationConnector Association="net2020_soporteModel.FK__tbl_usuar__idper__0F2D40CE" ManuallyRouted="false" />
+        <AssociationConnector Association="net2020_soporteModel.FK__tbl_provi__idreg__5F7E2DAC" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,527 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="net2020_soporteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="asignado">
+    <Key>
+      <PropertyRef Name="idasignado" />
+    </Key>
+    <Property Name="idasignado" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idsoporte" Type="Int64" Nullable="false" />
+    <Property Name="idoperador" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="operador" Relationship="Self.FK__asignado__idoper__04AFB25B" FromRole="asignado" ToRole="operador" />
+    <NavigationProperty Name="soporte" Relationship="Self.FK__asignado__idsopo__03BB8E22" FromRole="asignado" ToRole="soporte" />
+    <NavigationProperty Name="seguimiento" Relationship="Self.FK__seguimien__idasi__078C1F06" FromRole="asignado" ToRole="seguimiento" />
+  </EntityType>
+  <EntityType Name="cliente">
+    <Key>
+      <PropertyRef Name="idcliente" />
+    </Key>
+    <Property Name="idcliente" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idpersona" Type="Int64" Nullable="false" />
+    <Property Name="idplan" Type="Int32" Nullable="false" />
+    <Property Name="fechaini" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="persona" Relationship="Self.FK__cliente__idperso__74794A92" FromRole="cliente" ToRole="persona" />
+    <NavigationProperty Name="tipoplan" Relationship="Self.FK__cliente__idplan__756D6ECB" FromRole="cliente" ToRole="tipoplan" />
+    <NavigationProperty Name="solicitud" Relationship="Self.FK__solicitud__idcli__7849DB76" FromRole="cliente" ToRole="solicitud" />
+  </EntityType>
+  <EntityType Name="estado">
+    <Key>
+      <PropertyRef Name="idestado" />
+    </Key>
+    <Property Name="idestado" Type="Int32" Nullable="false" />
+    <Property Name="desc_estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="seguimiento" Relationship="Self.FK__seguimien__idest__0880433F" FromRole="estado" ToRole="seguimiento" />
+    <NavigationProperty Name="soporte" Relationship="Self.FK__soporte__idestad__00DF2177" FromRole="estado" ToRole="soporte" />
+  </EntityType>
+  <EntityType Name="operador">
+    <Key>
+      <PropertyRef Name="idoperador" />
+    </Key>
+    <Property Name="idoperador" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idpersona" Type="Int64" Nullable="false" />
+    <Property Name="idsucursal" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="asignado" Relationship="Self.FK__asignado__idoper__04AFB25B" FromRole="operador" ToRole="asignado" />
+    <NavigationProperty Name="persona" Relationship="Self.FK__operador__idpers__7C1A6C5A" FromRole="operador" ToRole="persona" />
+    <NavigationProperty Name="sucursal" Relationship="Self.FK__operador__idsucu__7D0E9093" FromRole="operador" ToRole="sucursal" />
+  </EntityType>
+  <EntityType Name="persona">
+    <Key>
+      <PropertyRef Name="idpersona" />
+    </Key>
+    <Property Name="idpersona" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="rut" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dv" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ap_paterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ap_materno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="telefono" Type="Int32" Nullable="false" />
+    <Property Name="dir_calle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dir_numero" Type="Int32" Nullable="false" />
+    <Property Name="idcomuna" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="cliente" Relationship="Self.FK__cliente__idperso__74794A92" FromRole="persona" ToRole="cliente" />
+    <NavigationProperty Name="operador" Relationship="Self.FK__operador__idpers__7C1A6C5A" FromRole="persona" ToRole="operador" />
+    <NavigationProperty Name="tbl_comuna" Relationship="Self.FK__persona__idcomun__719CDDE7" FromRole="persona" ToRole="tbl_comuna" />
+    <NavigationProperty Name="tbl_usuario" Relationship="Self.FK__tbl_usuar__idper__0E391C95" FromRole="persona" ToRole="tbl_usuario" />
+  </EntityType>
+  <EntityType Name="seguimiento">
+    <Key>
+      <PropertyRef Name="idseguimiento" />
+    </Key>
+    <Property Name="idseguimiento" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idasignado" Type="Int64" Nullable="false" />
+    <Property Name="fecha" Type="Int32" Nullable="false" />
+    <Property Name="desc_seguimiento" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="idestado" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="asignado" Relationship="Self.FK__seguimien__idasi__078C1F06" FromRole="seguimiento" ToRole="asignado" />
+    <NavigationProperty Name="estado" Relationship="Self.FK__seguimien__idest__0880433F" FromRole="seguimiento" ToRole="estado" />
+  </EntityType>
+  <EntityType Name="solicitud">
+    <Key>
+      <PropertyRef Name="idsolicitud" />
+    </Key>
+    <Property Name="idsolicitud" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idcliente" Type="Int64" Nullable="false" />
+    <Property Name="idtiposol" Type="Int32" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="desc_solicitud" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idestado" Type="Int32" Nullable="false" />
+    <Property Name="fecha_tope" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="cliente" Relationship="Self.FK__solicitud__idcli__7849DB76" FromRole="solicitud" ToRole="cliente" />
+    <NavigationProperty Name="tiposolicitud" Relationship="Self.FK__solicitud__idtip__793DFFAF" FromRole="solicitud" ToRole="tiposolicitud" />
+    <NavigationProperty Name="soporte" Relationship="Self.FK__soporte__idsolic__7FEAFD3E" FromRole="solicitud" ToRole="soporte" />
+  </EntityType>
+  <EntityType Name="soporte">
+    <Key>
+      <PropertyRef Name="idsoporte" />
+    </Key>
+    <Property Name="idsoporte" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idsolicitud" Type="Int64" Nullable="false" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="desc_soporte" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idestado" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="asignado" Relationship="Self.FK__asignado__idsopo__03BB8E22" FromRole="soporte" ToRole="asignado" />
+    <NavigationProperty Name="estado" Relationship="Self.FK__soporte__idestad__00DF2177" FromRole="soporte" ToRole="estado" />
+    <NavigationProperty Name="solicitud" Relationship="Self.FK__soporte__idsolic__7FEAFD3E" FromRole="soporte" ToRole="solicitud" />
+  </EntityType>
+  <EntityType Name="sucursal">
+    <Key>
+      <PropertyRef Name="idsucursal" />
+    </Key>
+    <Property Name="idsucursal" Type="Int32" Nullable="false" />
+    <Property Name="idregion" Type="Int32" Nullable="false" />
+    <Property Name="idcomuna" Type="Int32" Nullable="false" />
+    <Property Name="desc_sucursal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="operador" Relationship="Self.FK__operador__idsucu__7D0E9093" FromRole="sucursal" ToRole="operador" />
+    <NavigationProperty Name="tbl_comuna" Relationship="Self.FK__sucursal__idcomu__6CD828CA" FromRole="sucursal" ToRole="tbl_comuna" />
+    <NavigationProperty Name="tbl_region" Relationship="Self.FK__sucursal__idregi__6BE40491" FromRole="sucursal" ToRole="tbl_region" />
+  </EntityType>
+  <EntityType Name="tbl_comuna">
+    <Key>
+      <PropertyRef Name="idcomuna" />
+    </Key>
+    <Property Name="idcomuna" Type="Int32" Nullable="false" />
+    <Property Name="desc_comuna" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idregion" Type="Int32" Nullable="false" />
+    <Property Name="idprovincia" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="persona" Relationship="Self.FK__persona__idcomun__719CDDE7" FromRole="tbl_comuna" ToRole="persona" />
+    <NavigationProperty Name="sucursal" Relationship="Self.FK__sucursal__idcomu__6CD828CA" FromRole="tbl_comuna" ToRole="sucursal" />
+    <NavigationProperty Name="tbl_provincia" Relationship="Self.FK__tbl_comun__idpro__625A9A57" FromRole="tbl_comuna" ToRole="tbl_provincia" />
+    <NavigationProperty Name="tbl_region" Relationship="Self.FK__tbl_comun__idreg__634EBE90" FromRole="tbl_comuna" ToRole="tbl_region" />
+  </EntityType>
+  <EntityType Name="tbl_perfil">
+    <Key>
+      <PropertyRef Name="idperfil" />
+    </Key>
+    <Property Name="idperfil" Type="Int32" Nullable="false" />
+    <Property Name="desc_perfil" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tbl_usuario" Relationship="Self.FK__tbl_usuar__idper__0F2D40CE" FromRole="tbl_perfil" ToRole="tbl_usuario" />
+  </EntityType>
+  <EntityType Name="tbl_provincia">
+    <Key>
+      <PropertyRef Name="idprovincia" />
+    </Key>
+    <Property Name="idprovincia" Type="Int32" Nullable="false" />
+    <Property Name="desc_provincia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idregion" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tbl_comuna" Relationship="Self.FK__tbl_comun__idpro__625A9A57" FromRole="tbl_provincia" ToRole="tbl_comuna" />
+    <NavigationProperty Name="tbl_region" Relationship="Self.FK__tbl_provi__idreg__5F7E2DAC" FromRole="tbl_provincia" ToRole="tbl_region" />
+  </EntityType>
+  <EntityType Name="tbl_region">
+    <Key>
+      <PropertyRef Name="idregion" />
+    </Key>
+    <Property Name="idregion" Type="Int32" Nullable="false" />
+    <Property Name="desc_region" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="sucursal" Relationship="Self.FK__sucursal__idregi__6BE40491" FromRole="tbl_region" ToRole="sucursal" />
+    <NavigationProperty Name="tbl_comuna" Relationship="Self.FK__tbl_comun__idreg__634EBE90" FromRole="tbl_region" ToRole="tbl_comuna" />
+    <NavigationProperty Name="tbl_provincia" Relationship="Self.FK__tbl_provi__idreg__5F7E2DAC" FromRole="tbl_region" ToRole="tbl_provincia" />
+  </EntityType>
+  <EntityType Name="tbl_usuario">
+    <Key>
+      <PropertyRef Name="idusuario" />
+    </Key>
+    <Property Name="idusuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idpersona" Type="Int64" Nullable="false" />
+    <Property Name="idperfil" Type="Int32" Nullable="false" />
+    <Property Name="usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="clave" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="persona" Relationship="Self.FK__tbl_usuar__idper__0E391C95" FromRole="tbl_usuario" ToRole="persona" />
+    <NavigationProperty Name="tbl_perfil" Relationship="Self.FK__tbl_usuar__idper__0F2D40CE" FromRole="tbl_usuario" ToRole="tbl_perfil" />
+  </EntityType>
+  <EntityType Name="tipoplan">
+    <Key>
+      <PropertyRef Name="idplan" />
+    </Key>
+    <Property Name="idplan" Type="Int32" Nullable="false" />
+    <Property Name="desc_plan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="costo" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="cliente" Relationship="Self.FK__cliente__idplan__756D6ECB" FromRole="tipoplan" ToRole="cliente" />
+  </EntityType>
+  <EntityType Name="tiposolicitud">
+    <Key>
+      <PropertyRef Name="idtiposol" />
+    </Key>
+    <Property Name="idtiposol" Type="Int32" Nullable="false" />
+    <Property Name="desc_tiposol" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="numdias" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="solicitud" Relationship="Self.FK__solicitud__idtip__793DFFAF" FromRole="tiposolicitud" ToRole="solicitud" />
+  </EntityType>
+  <Association Name="FK__asignado__idoper__04AFB25B">
+    <End Role="operador" Type="Self.operador" Multiplicity="1" />
+    <End Role="asignado" Type="Self.asignado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="operador">
+        <PropertyRef Name="idoperador" />
+      </Principal>
+      <Dependent Role="asignado">
+        <PropertyRef Name="idoperador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__asignado__idsopo__03BB8E22">
+    <End Role="soporte" Type="Self.soporte" Multiplicity="1" />
+    <End Role="asignado" Type="Self.asignado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="soporte">
+        <PropertyRef Name="idsoporte" />
+      </Principal>
+      <Dependent Role="asignado">
+        <PropertyRef Name="idsoporte" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__seguimien__idasi__078C1F06">
+    <End Role="asignado" Type="Self.asignado" Multiplicity="1" />
+    <End Role="seguimiento" Type="Self.seguimiento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="asignado">
+        <PropertyRef Name="idasignado" />
+      </Principal>
+      <Dependent Role="seguimiento">
+        <PropertyRef Name="idasignado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__cliente__idperso__74794A92">
+    <End Role="persona" Type="Self.persona" Multiplicity="1" />
+    <End Role="cliente" Type="Self.cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="persona">
+        <PropertyRef Name="idpersona" />
+      </Principal>
+      <Dependent Role="cliente">
+        <PropertyRef Name="idpersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__cliente__idplan__756D6ECB">
+    <End Role="tipoplan" Type="Self.tipoplan" Multiplicity="1" />
+    <End Role="cliente" Type="Self.cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipoplan">
+        <PropertyRef Name="idplan" />
+      </Principal>
+      <Dependent Role="cliente">
+        <PropertyRef Name="idplan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__solicitud__idcli__7849DB76">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="1" />
+    <End Role="solicitud" Type="Self.solicitud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="idcliente" />
+      </Principal>
+      <Dependent Role="solicitud">
+        <PropertyRef Name="idcliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__seguimien__idest__0880433F">
+    <End Role="estado" Type="Self.estado" Multiplicity="1" />
+    <End Role="seguimiento" Type="Self.seguimiento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="estado">
+        <PropertyRef Name="idestado" />
+      </Principal>
+      <Dependent Role="seguimiento">
+        <PropertyRef Name="idestado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__soporte__idestad__00DF2177">
+    <End Role="estado" Type="Self.estado" Multiplicity="1" />
+    <End Role="soporte" Type="Self.soporte" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="estado">
+        <PropertyRef Name="idestado" />
+      </Principal>
+      <Dependent Role="soporte">
+        <PropertyRef Name="idestado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__operador__idpers__7C1A6C5A">
+    <End Role="persona" Type="Self.persona" Multiplicity="1" />
+    <End Role="operador" Type="Self.operador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="persona">
+        <PropertyRef Name="idpersona" />
+      </Principal>
+      <Dependent Role="operador">
+        <PropertyRef Name="idpersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__operador__idsucu__7D0E9093">
+    <End Role="sucursal" Type="Self.sucursal" Multiplicity="1" />
+    <End Role="operador" Type="Self.operador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sucursal">
+        <PropertyRef Name="idsucursal" />
+      </Principal>
+      <Dependent Role="operador">
+        <PropertyRef Name="idsucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__persona__idcomun__719CDDE7">
+    <End Role="tbl_comuna" Type="Self.tbl_comuna" Multiplicity="1" />
+    <End Role="persona" Type="Self.persona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_comuna">
+        <PropertyRef Name="idcomuna" />
+      </Principal>
+      <Dependent Role="persona">
+        <PropertyRef Name="idcomuna" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_usuar__idper__0E391C95">
+    <End Role="persona" Type="Self.persona" Multiplicity="1" />
+    <End Role="tbl_usuario" Type="Self.tbl_usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="persona">
+        <PropertyRef Name="idpersona" />
+      </Principal>
+      <Dependent Role="tbl_usuario">
+        <PropertyRef Name="idpersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__solicitud__idtip__793DFFAF">
+    <End Role="tiposolicitud" Type="Self.tiposolicitud" Multiplicity="0..1" />
+    <End Role="solicitud" Type="Self.solicitud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tiposolicitud">
+        <PropertyRef Name="idtiposol" />
+      </Principal>
+      <Dependent Role="solicitud">
+        <PropertyRef Name="idtiposol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__soporte__idsolic__7FEAFD3E">
+    <End Role="solicitud" Type="Self.solicitud" Multiplicity="1" />
+    <End Role="soporte" Type="Self.soporte" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="solicitud">
+        <PropertyRef Name="idsolicitud" />
+      </Principal>
+      <Dependent Role="soporte">
+        <PropertyRef Name="idsolicitud" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__sucursal__idcomu__6CD828CA">
+    <End Role="tbl_comuna" Type="Self.tbl_comuna" Multiplicity="1" />
+    <End Role="sucursal" Type="Self.sucursal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_comuna">
+        <PropertyRef Name="idcomuna" />
+      </Principal>
+      <Dependent Role="sucursal">
+        <PropertyRef Name="idcomuna" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__sucursal__idregi__6BE40491">
+    <End Role="tbl_region" Type="Self.tbl_region" Multiplicity="1" />
+    <End Role="sucursal" Type="Self.sucursal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_region">
+        <PropertyRef Name="idregion" />
+      </Principal>
+      <Dependent Role="sucursal">
+        <PropertyRef Name="idregion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_comun__idpro__625A9A57">
+    <End Role="tbl_provincia" Type="Self.tbl_provincia" Multiplicity="1" />
+    <End Role="tbl_comuna" Type="Self.tbl_comuna" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_provincia">
+        <PropertyRef Name="idprovincia" />
+      </Principal>
+      <Dependent Role="tbl_comuna">
+        <PropertyRef Name="idprovincia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_comun__idreg__634EBE90">
+    <End Role="tbl_region" Type="Self.tbl_region" Multiplicity="1" />
+    <End Role="tbl_comuna" Type="Self.tbl_comuna" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_region">
+        <PropertyRef Name="idregion" />
+      </Principal>
+      <Dependent Role="tbl_comuna">
+        <PropertyRef Name="idregion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_usuar__idper__0F2D40CE">
+    <End Role="tbl_perfil" Type="Self.tbl_perfil" Multiplicity="1" />
+    <End Role="tbl_usuario" Type="Self.tbl_usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_perfil">
+        <PropertyRef Name="idperfil" />
+      </Principal>
+      <Dependent Role="tbl_usuario">
+        <PropertyRef Name="idperfil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_provi__idreg__5F7E2DAC">
+    <End Role="tbl_region" Type="Self.tbl_region" Multiplicity="1" />
+    <End Role="tbl_provincia" Type="Self.tbl_provincia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_region">
+        <PropertyRef Name="idregion" />
+      </Principal>
+      <Dependent Role="tbl_provincia">
+        <PropertyRef Name="idregion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="net2020_soporteEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="asignado" EntityType="Self.asignado" />
+    <EntitySet Name="cliente" EntityType="Self.cliente" />
+    <EntitySet Name="estado" EntityType="Self.estado" />
+    <EntitySet Name="operador" EntityType="Self.operador" />
+    <EntitySet Name="persona" EntityType="Self.persona" />
+    <EntitySet Name="seguimiento" EntityType="Self.seguimiento" />
+    <EntitySet Name="solicitud" EntityType="Self.solicitud" />
+    <EntitySet Name="soporte" EntityType="Self.soporte" />
+    <EntitySet Name="sucursal" EntityType="Self.sucursal" />
+    <EntitySet Name="tbl_comuna" EntityType="Self.tbl_comuna" />
+    <EntitySet Name="tbl_perfil" EntityType="Self.tbl_perfil" />
+    <EntitySet Name="tbl_provincia" EntityType="Self.tbl_provincia" />
+    <EntitySet Name="tbl_region" EntityType="Self.tbl_region" />
+    <EntitySet Name="tbl_usuario" EntityType="Self.tbl_usuario" />
+    <EntitySet Name="tipoplan" EntityType="Self.tipoplan" />
+    <EntitySet Name="tiposolicitud" EntityType="Self.tiposolicitud" />
+    <AssociationSet Name="FK__asignado__idoper__04AFB25B" Association="Self.FK__asignado__idoper__04AFB25B">
+      <End Role="operador" EntitySet="operador" />
+      <End Role="asignado" EntitySet="asignado" />
+    </AssociationSet>
+    <AssociationSet Name="FK__asignado__idsopo__03BB8E22" Association="Self.FK__asignado__idsopo__03BB8E22">
+      <End Role="soporte" EntitySet="soporte" />
+      <End Role="asignado" EntitySet="asignado" />
+    </AssociationSet>
+    <AssociationSet Name="FK__seguimien__idasi__078C1F06" Association="Self.FK__seguimien__idasi__078C1F06">
+      <End Role="asignado" EntitySet="asignado" />
+      <End Role="seguimiento" EntitySet="seguimiento" />
+    </AssociationSet>
+    <AssociationSet Name="FK__cliente__idperso__74794A92" Association="Self.FK__cliente__idperso__74794A92">
+      <End Role="persona" EntitySet="persona" />
+      <End Role="cliente" EntitySet="cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__cliente__idplan__756D6ECB" Association="Self.FK__cliente__idplan__756D6ECB">
+      <End Role="tipoplan" EntitySet="tipoplan" />
+      <End Role="cliente" EntitySet="cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__solicitud__idcli__7849DB76" Association="Self.FK__solicitud__idcli__7849DB76">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="solicitud" EntitySet="solicitud" />
+    </AssociationSet>
+    <AssociationSet Name="FK__seguimien__idest__0880433F" Association="Self.FK__seguimien__idest__0880433F">
+      <End Role="estado" EntitySet="estado" />
+      <End Role="seguimiento" EntitySet="seguimiento" />
+    </AssociationSet>
+    <AssociationSet Name="FK__soporte__idestad__00DF2177" Association="Self.FK__soporte__idestad__00DF2177">
+      <End Role="estado" EntitySet="estado" />
+      <End Role="soporte" EntitySet="soporte" />
+    </AssociationSet>
+    <AssociationSet Name="FK__operador__idpers__7C1A6C5A" Association="Self.FK__operador__idpers__7C1A6C5A">
+      <End Role="persona" EntitySet="persona" />
+      <End Role="operador" EntitySet="operador" />
+    </AssociationSet>
+    <AssociationSet Name="FK__operador__idsucu__7D0E9093" Association="Self.FK__operador__idsucu__7D0E9093">
+      <End Role="sucursal" EntitySet="sucursal" />
+      <End Role="operador" EntitySet="operador" />
+    </AssociationSet>
+    <AssociationSet Name="FK__persona__idcomun__719CDDE7" Association="Self.FK__persona__idcomun__719CDDE7">
+      <End Role="tbl_comuna" EntitySet="tbl_comuna" />
+      <End Role="persona" EntitySet="persona" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_usuar__idper__0E391C95" Association="Self.FK__tbl_usuar__idper__0E391C95">
+      <End Role="persona" EntitySet="persona" />
+      <End Role="tbl_usuario" EntitySet="tbl_usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__solicitud__idtip__793DFFAF" Association="Self.FK__solicitud__idtip__793DFFAF">
+      <End Role="tiposolicitud" EntitySet="tiposolicitud" />
+      <End Role="solicitud" EntitySet="solicitud" />
+    </AssociationSet>
+    <AssociationSet Name="FK__soporte__idsolic__7FEAFD3E" Association="Self.FK__soporte__idsolic__7FEAFD3E">
+      <End Role="solicitud" EntitySet="solicitud" />
+      <End Role="soporte" EntitySet="soporte" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sucursal__idcomu__6CD828CA" Association="Self.FK__sucursal__idcomu__6CD828CA">
+      <End Role="tbl_comuna" EntitySet="tbl_comuna" />
+      <End Role="sucursal" EntitySet="sucursal" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sucursal__idregi__6BE40491" Association="Self.FK__sucursal__idregi__6BE40491">
+      <End Role="tbl_region" EntitySet="tbl_region" />
+      <End Role="sucursal" EntitySet="sucursal" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_comun__idpro__625A9A57" Association="Self.FK__tbl_comun__idpro__625A9A57">
+      <End Role="tbl_provincia" EntitySet="tbl_provincia" />
+      <End Role="tbl_comuna" EntitySet="tbl_comuna" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_comun__idreg__634EBE90" Association="Self.FK__tbl_comun__idreg__634EBE90">
+      <End Role="tbl_region" EntitySet="tbl_region" />
+      <End Role="tbl_comuna" EntitySet="tbl_comuna" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_usuar__idper__0F2D40CE" Association="Self.FK__tbl_usuar__idper__0F2D40CE">
+      <End Role="tbl_perfil" EntitySet="tbl_perfil" />
+      <End Role="tbl_usuario" EntitySet="tbl_usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_provi__idreg__5F7E2DAC" Association="Self.FK__tbl_provi__idreg__5F7E2DAC">
+      <End Role="tbl_region" EntitySet="tbl_region" />
+      <End Role="tbl_provincia" EntitySet="tbl_provincia" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

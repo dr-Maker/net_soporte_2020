@@ -1,0 +1,35 @@
+﻿@model DataSoporte2020.Data.tipoplan
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Plantilla.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tipoplan</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.desc_plan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.desc_plan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.costo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.costo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idplan }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

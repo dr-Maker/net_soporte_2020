@@ -1,0 +1,72 @@
+﻿@model List<DataSoporte2020.Data.persona>
+@{
+    ViewBag.Title = "Crear";
+    ViewBag.TitlePag = "Crear Persona";
+    Layout = "~/Views/Shared/_Plantilla.cshtml";
+}
+
+<form method="post">
+
+    <div class="form-group">
+        <label>Id.Persona</label>
+        <input class="form-control" type="number" name="idpersona" value="" readonly />
+    </div>
+
+    <div class="form-group">
+        <label>Rut</label>
+        <input class="form-control" type="text" name="rut" value="" required />
+    </div>
+
+    <div class="form-group">
+        <label>DV</label>
+        <input class="form-control" type="text" name="dv" value="" required />
+    </div>
+    <div class="form-group">
+        <label>Ap Mapeterno</label>
+        <input class="form-control" type="text" name="ap_materno" value="" required />
+    </div>
+    <div class="form-group">
+        <label>Ap Paterno</label>
+        <input class="form-control" type="text" name="ap_paterno" value="" required />
+    </div>
+    <div class="form-group">
+        <label>Nombre</label>
+        <input class="form-control" type="text" name="nombres" value="" required />
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input class="form-control" type="text" name="email" value="" required />
+    </div>
+    <div class="form-group">
+        <label>Teléfono</label>
+        <input class="form-control" type="text" name="telefono" value="" required />
+    </div>
+    <div class="form-group">
+        <label>dirección Calle</label>
+        <input class="form-control" type="text" name="dir_calle" value="" required />
+    </div>
+    <div class="form-group">
+        <label>Dir num</label>
+        <input class="form-control" type="text" name="idcomuna" value="" required />
+    </div>
+    <div class="form-group">
+        <label>Comuna</label>
+        <select class="form-control" name="dir_numero" required>
+            <option value="0">Todas</option>
+            @foreach (var item in ViewBag.Comunas)
+            {
+                <option value="@item.idcomuna">@item.desc_comuna</option>
+            }
+        </select>
+
+    </div>
+
+    <div class="form-group">
+        <input class="btn btn-info" type="submit" value="Grabar" />
+    </div>
+</form>
+
+<p>
+    @Html.ActionLink("Volver", "Index")
+</p>
+

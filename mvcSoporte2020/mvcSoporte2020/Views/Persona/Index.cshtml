@@ -1,0 +1,45 @@
+﻿@model List<DataSoporte2020.Data.persona>
+@{
+    ViewBag.Title = "Index";
+    ViewBag.TitlePag = "Listado de personas";
+    Layout = "~/Views/Shared/_Plantilla.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Nuevo estado", "Crear")
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Id.Persona</th>
+            <th>Rut</th>
+            <th>Nombre Persona</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+            <th>Dirección</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.idpersona</td>
+            <td>@item.rut</td>
+            <td>@item.nombres</td>
+            <td>@item.email</td>
+            <td>@item.telefono</td>
+            <td>@item.dir_calle</td>
+
+
+            <td>@Html.ActionLink("Editar", "Editar", new { id = item.idpersona })</td>
+            <td>@Html.ActionLink("Eliminar", "Borrar", new { id = item.idpersona })</td>
+
+        </tr>
+        }
+    </tbody>
+</table>
+
+
+
